@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+	 <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>No Orders</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div>
+                <div class="text-center">
+                    <h1>Can't place order</h1>
+                    <p>Add items to the cart</p>
+                    <a th:href="@{/showCart}" style=" text-decoration: none; color: black;" ><button class="btn btn-primary" style="background-color: #ff9d1e; color: black; " >Back </button></a>
+                </div>
+            </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>All Items</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<style>
+		body {
+background-color: black;
+		color: white;
+		}
+		
+		.counter {
+    width: 150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.counter input {
+ 
+    border: 0;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    color:white;
+    background-color: transparent;
+    appearance: none;
+    outline: 0;
+    padding-left: 10px;
+}
+.counter span {
+    display: block;
+    font-size: 25px;
+    padding: 0 10px;
+    cursor: pointer;
+    color:black;
+    user-select: none;
+    background-color: white;
+}
+
+	</style>
+
+</head>
+
+<body>
+	<div style="display: flex;">
+
+			<form action="/showBackPage" method="post">
+				<input type="hidden" name="itemName" th:value="${foodItemName}">
+				<button type="submit" style="background-color: black; color: white; font-size: xx-large;">
+					<< </button>
+			</form>
+	</div>
+	
+<!--	<div class="container my-3 col-md-12" style="display: flex; justify-content: center;">
+		<table border="0" class="table  table-responsive-md" style="width: 60%;">
+			<thead style="font-size: x-large;">
+				<tr>
+					<th></th>
+					<th>Food Item</th>
+					<th>Price</th>
+					<th>Availability</th>
+					<th></th>
+
+				</tr>
+			</thead>
+			<tbody style="font-size: larger;">
+				<tr th:each="item : ${listItem}">
+					<td ><img th:src="${item.url}" style="width: 200px; height:150px"></td>
+					<td th:text="${item.foodItemName}" style="text-align: center; vertical-align: middle;"></td>
+					<td th:text="${item.price}" style="text-align: center; vertical-align: middle;"></td>
+					<td th:text="${item.availablity}" style="text-align: center; vertical-align: middle;"></td>
+					<td style="text-align: center; vertical-align: middle;">
+						<form action="/addToCart" method="post">
+							<input type="hidden" name="itemId" th:value="${item.itemId}">
+
+							<div class="counter">
+								<span class="down" onClick='decreaseCount(event, this)' > &nbsp;- </span>
+								<input type="number" value="0" name="itemQuantity" style="width: 50px;">
+								<span class="up" onClick='increaseCount(event, this)'> &nbsp;+ </span>
+								<input type="submit" value="Add to Cart"
+									style="background-color: #ff9d1e; color: black; margin-left: 20px;">
+
+							</div>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>-->
+	
+	<div class="container h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				        <div th:if="${not #lists.isEmpty(listItem)}">
+				<div class="col">
+
+  					<div th:each="item, iterStat : ${listItem}" class="col-md-12">
+					<div class="card mb-4" style="height: 200px; width: 55rem;">
+						<div class="card-body p-4" >
+							<div class="row align-items-center">
+
+								<div class="col-md-2">
+									<img th:src="${item.url}" class="img-fluid"
+										alt="Generic placeholder image" style="width: 200px; height: 150px;">
+								</div>
+
+								<div class="col-md-2 d-flex justify-content-center">
+									<div>
+										<p class="small text-muted mb-4 pb-2">Name</p>
+										<p class="large text-muted mb-4 pb-2" th:text="${item.foodItemName}" style="font-size: larger; font-weight: 500;">
+										</p>
+									</div>
+								</div>
+
+								<div class="col-md-2 d-flex justify-content-center">
+									<div>
+										<p class="small text-muted mb-4 pb-2">Price</p>
+										<p class="small text-muted mb-4 pb-2" th:text="${item.price}"  style="font-size: larger; font-weight: 500;">
+										</p>
+									</div>
+								</div>
+								
+								<div class="col-md-2 d-flex justify-content-center">
+									<div>
+										<p class="small text-muted mb-4 pb-2">Availability</p>
+										<p class="small text-muted mb-4 pb-2" th:text="${item.availablity}"  style="font-size: larger; font-weight: 500;">
+										</p>
+									</div>
+								</div>
+								
+								<div class="col-md-4 d-flex justify-content-center" >
+									<form action="/addToCart" method="post">
+										<input type="hidden" name="itemId" th:value="${item.itemId}">
+								
+										<div class="counter">
+											<span class="down" onClick='decreaseCount(event, this)'> &nbsp;- </span>
+											<input type="number" value="1" name="itemQuantity"
+												style="width: 50px; color:black; background-color: lightgrey;">
+											<span class="up" onClick='increaseCount(event, this)'> &nbsp;+ </span>
+											<input type="submit" value="Add to Cart"
+												style="background-color: #ff9d1e; color: black; margin-left: 20px;">
+								
+										</div>
+									</form>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+
+				</div>
+				</div>
+			</div>
+			
+		
+         
+		</div>
+
+		</div>
+		
+	<script th:inline="javascript">
+		function increaseCount(a, b) {
+			var input = b.previousElementSibling;
+			var value = parseInt(input.value, 10);
+			value = isNaN(value) ? 0 : value;
+			value++;
+			input.value = value;
+		}
+		function decreaseCount(a, b) {
+			var input = b.nextElementSibling;
+			var value = parseInt(input.value, 10);
+			if (value > 1) {
+				value = isNaN(value) ? 0 : value;
+				value--;
+				input.value = value;
+			}
+		}
+	</script>
+
+</body>
+
+</html>

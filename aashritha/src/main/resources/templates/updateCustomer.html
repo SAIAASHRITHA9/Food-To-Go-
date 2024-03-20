@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Update Customer Profile</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<style>
+	body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-image: url('/images/cartbg.jpg');
+		background-size: cover;
+		background-position: center;
+		min-height: 80vh;
+	}
+</style>
+
+<body>
+	<div class="container">
+
+		<form action="#" th:action="@{/saveUpdateCustomer}" th:object="${customer}" method="POST"
+			style="padding-left: 40%;">
+			
+			<h2 style="color: white;">Update Customer</h2><br><br>
+			
+			<!-- Add hidden form field to handle update -->
+			<input th:type="hidden" th:field="*{customerId}" />
+			<input th:type="hidden" th:field="*{customerEmail}" />
+			<input th:type="hidden" th:field="*{customerPassword}" />
+			<input type="text" th:field="*{customerName}" class="form-control mb-4 col-5">
+			<input th:type="text" th:field="*{customerPhoneNumber}" class="form-control mb-4 col-5" />
+			<input type="text" th:field="*{customerAddress}" class="form-control mb-4 col-5">
+
+			<button type="submit" class="btn btn-info col-2"
+				style="background-color: #ff9d1e; color: black; font-size: larger; font-weight: 500;margin-left: 10%;"> Update </button>
+		</form>
+		<br><br>
+		<a th:href="@{/viewCustomerProfile}"><button type="button" class="btn btn-primary btn-md"
+				style="background-color: #ff9d1e; color: black; font-weight: 400;">Back</button></a>
+
+	</div>
+</body>
+
+</html>

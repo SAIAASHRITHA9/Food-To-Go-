@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Order</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<style>
+	        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('/images/reslog.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+</style>
+<body>
+	<div class="container">
+		
+		<h2 style="color: white;">Update Status</h2>
+
+		<form action="#" th:action="@{/saveUpdateStatus}" th:object="${order}"
+			method="POST">
+			
+			
+			<input th:type="hidden" th:field="*{orderId}" />
+			<input th:type="hidden" th:field="*{orderDate}" />
+			<input th:type="hidden" th:field="*{customer}" />
+			<input th:type="hidden" th:field="*{restaurant}" />
+			<input th:type="hidden" th:field="*{orderedItem}"/>
+<!-- 		<select th:field="*{orderStatus}" size="2">
+    <option value="Accepted">Accepted</option>
+    <option value="Delivered">Delivered</option>
+
+  </select><br><br>-->
+		<div class="container mt-3">
+    <div class="form-check">
+      <input type="radio" class="form-check-input" id="radio1" name="optradio"  th:field="*{orderStatus}"value="Accepted" checked>
+      <label class="form-check-label" for="radio1" style="color: white;">Accepted</label>
+    </div>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" id="radio2" th:field="*{orderStatus}" name="optradio" value="Delivered">
+      <label class="form-check-label" for="radio2" style="color: white;">Delivered</label>
+    </div>
+</div>
+
+				
+				<button type="submit" class="btn btn-info col-2" style="background-color: #ff9d1e; color: black; font-size: larger; font-weight: 500;"> Update </button>
+		</form>
+
+	</div>
+</body>
+</html>

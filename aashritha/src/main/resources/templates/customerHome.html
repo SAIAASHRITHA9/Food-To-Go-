@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Customer Home Page</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Owl Carousel CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.owl-carousel {
+			display: flex;
+			flex-wrap: nowrap;
+		}
+
+		.card {
+			margin: 10px;
+
+		}
+		
+
+		.card:hover {
+			transform: scale(1.1);
+			box-shadow: 0 0 4px #111;
+			transition: .3s;
+		}
+
+		.card:focus {
+			transition: .3s;
+		}
+
+
+
+		.snav input {
+			height: 100%;
+			border: none;
+			outline: none;
+			border: 2px solid rgba(255, 255, 255, 0.4);
+			border-radius: 40px;
+			font-size: 16px;
+			background-color: #ff9d1e;
+
+
+		}
+
+		.snav input::placeholder {
+			color: white;
+		}
+
+		.snav {
+			display: flex;
+			justify-content: center;
+			padding-bottom: 20px;
+			gap: 5rem;
+
+		}
+		
+		.dropdown-toggle::after {
+            content: none;
+        }
+	</style>
+</head>
+
+<body >
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<!-- Company Name to the Left -->
+				<a class="navbar-brand" href="#" style="font-size: xx-large; font-weight: 400; color: black;">Food To
+					Go</a>
+
+				<!-- Navbar Toggle Button (for smaller screens) -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<!-- Navigation Links to the Right -->
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#"
+								style="font-size: 20px; text-decoration: none; color: black;">Home <span
+									class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#" style="font-size: 20px; text-decoration: none; color: black;">
+								About</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="#" th:href="@{/customerOrders}"
+								style="font-size: 20px; text-decoration: none; color: black;">My order</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#" th:href="@{/showCart}"
+								style="font-size: 20px; text-decoration: none; color: black; ">My Cart</a>
+						</li>
+
+						 <li class="nav-item" style=" padding-left: 20px;">
+
+					
+<div class="dropdown" > 
+            <button class="dropdown-toggle"
+                    id="dropdownMenuButton" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true"
+                    aria-expanded="false"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="background-color: #ff9d1e; border:none;" viewBox="0 0 256 256" id="user-circle"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="16"></circle><circle cx="128" cy="120" r="40" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="16"></circle><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M63.79905,199.37405a72.02812,72.02812,0,0,1,128.40177-.00026"></path></svg>
+            </button> 
+            
+            <div class="dropdown-menu" 
+                 aria-labelledby="dropdownMenuButton"> 
+                <a class="dropdown-item" th:href="@{/viewCustomerProfile}"> 
+                  Profile
+              </a> 
+                <a class="dropdown-item" th:href="@{/logoutcus}"> 
+                 LogOut
+              </a>  
+            </div> 
+        </div> 
+			</li>
+
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section class="main" style="background-image: url('/images/back.jpg'); background-size: cover;">
+
+		<div class="snav" style="padding-top: 40px; margin-top: 0;">
+			<div>
+				<form th:action="@{/searchItem}" method="post">
+					<input type="text" name="foodItemName" id="f" placeholder="Search Food Item"
+						style="font-size: x-large;">
+					<span class="glyphicon glyphicon-search"
+						style="color: #ff9d1e; font-size: larger; padding-top: 20px;"></span>
+				</form>
+
+			</div>
+
+			<div>
+				<form th:action="@{/searchRestaurant}" method="post">
+					<input type="text" name="restaurantName" id="restaurantName" placeholder="Search Restaurant"
+						style="font-size: x-large;">
+					<span class="glyphicon glyphicon-search"
+						style="color:#ff9d1e; font-size: larger; padding-top: 20px;"></span>
+				</form>
+			</div>
+
+		</div>
+
+		<div class="owl-carousel owl-theme">
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchItem}" method="post">
+						<input type="hidden" th:value="cake" name="foodItemName">
+						<button type="submit">
+							<img src="/images/cake.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center; background: transparent;">Cake</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchItem}" method="post">
+						<input type="hidden" th:value="dosa" name="foodItemName">
+						<button type="submit">
+					<img src="/images/dosa.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Dosa</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchItem}" method="post">
+						<input type="hidden" th:value="icecream" name="foodItemName">
+						<button type="submit">
+					<img src="/images/icecream.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+						</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Ice Cream</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchItem}" method="post">
+						<input type="hidden" th:value="idli" name="foodItemName">
+						<button type="submit">
+					<img src="/images/Idli.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Idli</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchItem}" method="post">
+						<input type="hidden" th:value="momos" name="foodItemName">
+						<button type="submit">
+					<img src="/images/momos.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Momos</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchItem}" method="post">
+						<input type="hidden" th:value="pizza" name="foodItemName">
+						<button type="submit">
+					<img src="/images/pizza.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+					</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Pizza</h5>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchItem}" method="post">
+						<input type="hidden" th:value="pasta" name="foodItemName">
+						<button type="submit">
+					<img src="/images/pasta.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Pasta</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Add more cards as needed -->
+		</div>
+
+
+		<div class="owl-carousel owl-theme">
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchRestaurant}" method="post">
+						<input type="hidden" th:value="creamstone" name="restaurantName">
+						<button type="submit">
+					<img src="/images/creamstone.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Cream Stone</h5>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchRestaurant}" method="post">
+						<input type="hidden" th:value="papaji" name="restaurantName">
+						<button type="submit">
+					<img src="/images/papaji.png" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">PaPaJi</h5>
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchRestaurant}" method="post">
+						<input type="hidden" th:value="kritunga" name="restaurantName">
+						<button type="submit">
+					<img src="/images/kritunga.png" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Kritunga</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchRestaurant}" method="post">
+						<input type="hidden" th:value="ksbakers" name="restaurantName">
+						<button type="submit">
+					<img src="/images/ks.png" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">KS Bakers</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchRestaurant}" method="post">
+						<input type="hidden" th:value="paradise" name="restaurantName">
+						<button type="submit">
+					<img src="/images/paradise.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Paradise</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ">
+					<form th:action="@{/searchRestaurant}" method="post">
+						<input type="hidden" th:value="kfc" name="restaurantName">
+						<button type="submit">
+					<img src="/images/kfc.png" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">KFC</h5>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="item">
+				<div class="card" style="width: 18rem; ;">
+					<form th:action="@{/searchRestaurant}" method="post">
+						<input type="hidden" th:value="tulip" name="restaurantName">
+						<button type="submit">
+					<img src="/images/tulip.jpg" class="card-img-top" alt="Card Image" style="height: 300px;">
+						</button>
+					</form>
+					<div class="card-body" style="height: 50px;">
+						<h5 class="card-title" style="text-align: center;">Tulip</h5>
+					</div>
+				</div>
+			</div>
+			<!-- Add more cards as needed -->
+		</div>
+		<hr>
+		<div style=" color: white;">
+			<h2 style="text-align: center;">About</h2>
+			<div>
+				<p style="font-size: larger; font-weight: 700;">Food To Go helps you find and order food from wherever
+					you are. How it works? restaurant name or menu item. We'll filter your results accordingly. When you
+					find what you're looking for, you can place your order online or by phone, free of charge. Oh, and
+					we also give you access to 24/7 customer care team that tracks each order and makes sure you get
+					exactly what you want.</p>
+
+			</div>
+		</div>
+		<hr>
+
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+		<div class="container" style=" text-align: center;">
+			<a href="https://twitter.com/el_alturas" class="btn btn-social-icon btn-twitter" target="_blank">
+				<span class="fa-stack fa-2x">
+					<i class="fa fa-square-o fa-stack-2x" style="color: #ff9d1e;"></i>
+					<i class="fa fa-twitter fa-stack-1x" style="color: #ff9d1e;"></i>
+				</span>
+			</a>
+
+			<a href="https://twitter.com/el_alturas" class="btn btn-social-icon btn-youtube" target="_blank">
+				<span class="fa-stack fa-2x">
+					<i class="fa fa-square-o fa-stack-2x" style="color: #ff9d1e;"></i>
+					<i class="fa fa-youtube-square fa-stack-1x" style="color: #ff9d1e;"></i>
+				</span>
+			</a>
+
+			<a href="https://instagram.com/el_alturas" class="btn btn-social-icon btn-youtube" target="_blank">
+				<span class="fa-stack fa-2x">
+					<i class="fa fa-square-o fa-stack-2x" style="color: #ff9d1e;"></i>
+					<i class="fa fa-instagram fa-stack-1x" style="color: #ff9d1e;"></i>
+				</span>
+			</a>
+
+			<a href="https://facebook.com/el_alturas" class="btn btn-social-icon btn-youtube" target="_blank">
+				<span class="fa-stack fa-2x">
+					<i class="fa fa-square-o fa-stack-2x" style="color: #ff9d1e;"></i>
+					<i class="fa fa-facebook fa-stack-1x" style="color: #ff9d1e;"></i>
+				</span>
+			</a>
+		</div>
+		<br>
+
+
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);  font-size: large;">
+			<a class="text-body" href="#" style="font-size: large; text-decoration: none; color: white;"> © 2024
+				Copyright:Food To Go</a>
+		</div>
+
+	</section>
+
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- Owl Carousel JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.owl-carousel').owlCarousel({
+				loop: true,
+				margin: 10,
+				responsiveClass: true,
+				responsive: {
+					0: {
+						items: 1,
+						nav: true
+					},
+					600: {
+						items: 2,
+						nav: false
+					},
+					1000: {
+						items: 4,
+						nav: true,
+						loop: false
+					}
+				}
+			})
+		});
+	</script>
+
+</body>
+
+</html>

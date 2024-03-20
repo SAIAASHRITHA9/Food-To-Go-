@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>All Items</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	<style>
+	        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('/images/reslog.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+ 
+</style>
+</head>
+<body>
+<!--	<div style="width: 70%;">
+	<table border="0" class = "table table-striped table-responsive-md" style="color: #ff9d1e; font-size: xx-large; border-collapse: collapse;">
+			<thead>
+				<tr>
+					<th>Food Item</th>
+					<th>Price</th>
+					<th>Availability</th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			<tbody style="color:#ff9d1e; font-size: x-large; font-weight: 600;">
+				<tr th:each="item : ${listItem}">
+					<td th:text="${item.foodItemName}"></td>
+					<td th:text="${item.price}"></td>
+					<td th:text="${item.availablity}"></td>
+					<td> <a href="#" th:href="@{/updateFoodItem/{id}(id=${item.itemId})}"class="btn btn-primary" style="background-color: darkgray; color: black; font-size: large;font-weight: 400;">Update</a>
+					    <a href="#" th:href="@{/deleteFoodItem/{id}(id=${item.itemId})}" class="btn btn-primary" style="background-color: red; color: black; font-size: large; font-weight: 400;">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+	<br>
+	
+	<hr>-->
+	
+		<div class="container">
+  <br><br>
+
+        <div th:if="${not #lists.isEmpty(listItem)}">
+            <div class="row">
+                <!-- Loop through the item list -->
+                <div th:each="item, iterStat : ${listItem}" class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+<img th:src="${item.url}" style="height: 200px;">
+<div class="card-body">
+	<h5 class="card-title" th:text="${item.foodItemName}" style="text-align: center;"></h5>
+	<p class="card-text" th:text="${item.price}"></p>
+	<p class="card-text" th:text="${item.availablity}"></p>
+	<a href="#" th:href="@{/updateFoodItem/{id}(id=${item.itemId})}"class="btn btn-primary"  style="background-color: darkgray; color: black; font-size: large;font-weight: 400;">Update</a>
+	<a href="#" th:href="@{/deleteFoodItem/{id}(id=${item.itemId})}" class="btn btn-primary" style="background-color: red; color: black; font-size: large; font-weight: 400;">Delete</a>
+				
+</div>
+</div>
+                    <!-- Add a new row after every 3 items -->
+                    <br><br>
+                    <div th:if="${iterStat.index % 3 == 2}" class="w-100"></div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${#lists.isEmpty(listItem)}">
+            <p style="color: white;">No items available.</p>
+        </div>
+    </div>
+ <a th:href = "@{/manageFoodItems}" style="color: #ff9d1e;"> Back</a> 
+
+		
+		
+</body>
+</html>

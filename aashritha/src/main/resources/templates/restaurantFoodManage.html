@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> 
+    </script> 
+    <script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"> 
+    </script> 
+    
+    <title>Restaurant Manage Page</title>
+    
+        <style>
+		 body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('/images/reslog.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+	</style>
+
+ 
+</head>
+<body >
+	<div>
+		<div class="container" style="display: flex; justify-content: center;">
+
+			<a th:href="@{/viewItems}" style="color: white;"><button type="button" class="btn btn-primary"
+					style="background-color:  #ff9d1e; color: black; font-size: x-large; border-radius: 40px;">View Food Items</button></a>
+
+		</div>
+		<br><br>
+		<div class="container" style="display: flex; justify-content: center;">
+
+			<a th:href="@{/addItem}" style="color: white;"><button type="button" class="btn btn-primary"
+					style="background-color:  #ff9d1e; color: black; font-size: x-large; border-radius: 40px;">Add Food Item</button></a>
+
+		</div>
+
+		<br><br>
+		<div class="container" style="display: flex; justify-content: center;">
+
+			<a th:href="@{/backToRestaurantHome}" style="color: white;"><button type="button" class="btn btn-primary"
+					style="background-color:  #ff9d1e; color: black; font-size: x-large; border-radius: 40px;">Back</button></a>
+
+
+		</div>
+	</div>
+<!--<div class="b" >-->
+<!--<div class="container"  >-->
+<!--	<div class="row">-->
+<!--		<div class="col-xs-12">-->
+<!--			<div class="text-center" >-->
+<!--				<a th:href="@{/viewItems}" style=" text-decoration: none;"><button type="button" class="btn btn-primary btn-lg" style="background-color: #ff9d1e; font-size: x-large; border-radius: 40px; color: black;">View-->
+<!--						Food-->
+<!--						Items</button></a>-->
+<!--				<a th:href="@{/addItem}" style=" color:  white; text-decoration: none;"> <button type="button" class="btn btn-primary btn-lg" style="background-color: #ff9d1e; font-size: x-large; border-radius: 40px; color: black;">Add Food-->
+<!--						Items</button></a>-->
+<!--				<a th:href="@{/backToRestaurantHome}" style=" color:  white; text-decoration: none;"> <button type="button" class="btn btn-primary btn-lg" style="background-color: #ff9d1e; font-size: x-large; border-radius: 40px; color: black;">Back</button></a>-->
+<!--			</div>-->
+			
+<!--		</div>-->
+		
+<!--	</div>-->
+<!--</div>-->
+<!--<br>-->
+<!--</div>-->
+
+</body>
+</html>

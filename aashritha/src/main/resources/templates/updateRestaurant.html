@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Update Restaurant Profile</title>
+ 
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<style>
+	body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-image: url('/images/reslog.jpg');
+		background-size: cover;
+		background-position: center;
+		min-height: 100vh;
+	}
+</style>
+ 
+<body>
+	<div class="container">
+ 
+		
+  <h2 style="color: white; text-align: center;">Update Restaurant</h2>
+		<form action="#" th:action="@{/saveUpdateRestaurant}" th:object="${restaurant}" method="POST" style="padding-left: 35%;">
+ 
+
+ <br><br>
+			<!-- Add hidden form field to handle update -->
+			<input th:type="hidden" th:field="*{restaurantId}" />
+			<input th:type="hidden" th:field="*{restaurantEmail}" />
+			<input th:type="hidden" th:field="*{restaurantPassword}" />
+			<input type="text" th:field="*{restaurantName}" class="form-control mb-4 col-6">
+			<input type="text" th:field="*{restaurantOwnerName}" class="form-control mb-4 col-6">
+			<input type="text" th:field="*{url}" class="form-control mb-4 col-6">
+			<input th:type="text" th:field="*{restaurantPhoneNumber}" class="form-control mb-4 col-6">
+			<input type="text" th:field="*{address}" class="form-control mb-4 col-6">
+ 
+			<button type="submit" class="btn btn-info col-2"
+				style="background-color: #ff9d1e; color: black; font-size: larger; font-weight: 500; margin-left: 5%;"> Update </button>
+		 <a th:href="@{/viewRestaurantProfile}"><button type="button" class="btn btn-info col-2" style="background-color: #ff9d1e; color: black; font-size: larger; font-weight: 500; margin-left: 5%;">Back</button></a>
+
+		</form>
+		<br>
+
+	</div>
+</body>
+ 
+</html>

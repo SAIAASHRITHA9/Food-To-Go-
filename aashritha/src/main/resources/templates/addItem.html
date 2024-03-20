@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Items</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<style>
+	        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('/images/reslog.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+</style>
+<body>
+	<div class="container">
+		<h1 style="color: #ff9d1e;">Add Items</h1>
+		<hr>
+
+		<form action="#" th:action="@{/saveItem}" th:object="${item}"
+			method="POST">
+			<input type="text" th:field="*{foodItemName}"
+				placeholder="Enter Food Item" class="form-control mb-4 col-4" required>
+				
+				<input type="text" th:field="*{url}"
+				placeholder="Enter File Location" class="form-control mb-4 col-4" required>
+				
+				<input type="number" th:field="*{price}"
+				placeholder="Price" class="form-control mb-4 col-4" required>
+  				
+				<div class="form-check">
+					<input class="form-check-input" type="radio" th:field="*{availablity}" id="flexRadioDefault1"  value="true">
+					<label class="form-check-label" for="flexRadioDefault1" style="color: white; font-size: larger;">
+						Available
+					</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" th:field="*{availablity}" id="flexRadioDefault2" checked  value="false">
+					<label class="form-check-label" for="flexRadioDefault2" style="color: white; font-size: larger;">
+						Not Available
+					</label>
+				</div>
+  				<br>
+  				
+				
+				<button type="submit" class="btn btn-info col-2" style="background-color: #ff9d1e; color: black; font-size: larger; font-weight: 500;"> Save</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/manageFoodItems}" style="color: #ff9d1e; font-size: larger;"> Back</a>
+	</div>
+</body>
+</html>

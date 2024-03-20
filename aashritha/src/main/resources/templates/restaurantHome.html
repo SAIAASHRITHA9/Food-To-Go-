@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> 
+    </script> 
+    <script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"> 
+    </script> 
+    
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <title>Restaurant Home Page</title>
+    <style>
+		*{
+			padding: 0px;
+			margin: 0px;
+		}
+		#main {
+			background-image: url('/images/reslog.jpg');
+			background-size: cover;
+			background-position: center;
+			min-height: 100vh;
+			padding-top: 0px;
+			margin-top: 0px;
+			
+		}
+        
+        .dropdown-toggle::after { 
+            content: none; 
+        }
+	</style>
+</head>
+<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px; border: 0px; margin: 0px;">
+			<div class="container">
+				<!-- Company Name to the Left -->
+				<a class="navbar-brand" href="#" style="font-size: xx-large; font-weight: 400; color: black;">Food To
+					Go</a>
+			</div>
+	<div class="dropdown"> 
+            <button class="dropdown-toggle"
+                    id="dropdownMenuButton" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style="background-color:honeydew; border: none; padding-right: 70px;"> 
+                 <svg xmlns="http://www.w3.org/2000/svg" width="40px" style="background-color: #ff9d1e; border:none;" viewBox="0 0 256 256" id="user-circle"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="16"></circle><circle cx="128" cy="120" r="40" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="16"></circle><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M63.79905,199.37405a72.02812,72.02812,0,0,1,128.40177-.00026"></path></svg>
+           
+            </button> 
+            
+            <div class="dropdown-menu" 
+                 aria-labelledby="dropdownMenuButton" > 
+                <a class="dropdown-item" th:href="@{/viewRestaurantProfile}" style="font-size: larger;"> 
+                  Profile
+              </a> 
+                <a class="dropdown-item" th:href="@{/logoutRestaurant}" style="font-size: larger;"> 
+                 LogOut
+              </a>  
+            </div> 
+        </div> 
+	</nav>
+<section id = "main">
+		<div class="container" style="display: flex; justify-content: center; padding-top: 20%;">
+
+			<a th:href="@{/manageFoodItems}" style="color: white;"><button type="button" class="btn btn-primary"
+					style="background-color:  #ff9d1e; color: black; font-size: x-large; border-radius: 40px;">Manage
+					Food Items</button></a>
+
+		</div>
+		<br><br>
+		<div class="container" style="display: flex; justify-content: center;">
+
+			<a th:href="@{/manageOrderDetails}" style="color: white;"><button type="button" class="btn btn-primary"
+					style="background-color:  #ff9d1e; color: black; font-size: x-large; border-radius: 40px;">Manage
+					Order Details</button></a>
+
+		</div>
+
+		<br><br>
+	<!--	<div class="container" style="display: flex; justify-content: center;">
+
+			<a th:href="@{/logoutRestaurant}" style="color: white;"><button type="button" class="btn btn-primary"
+					style="background-color:  #ff9d1e; color: black; font-size: x-large; border-radius: 40px;">LogOut</button></a>
+
+
+		</div>-->
+	</section>
+</body>
+</html>

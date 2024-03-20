@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Item</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<style>
+	        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('/images/reslog.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+</style>
+<body>
+	<div class="container">
+		
+		<h2 style="color: white;">Update Item</h2>
+
+		<form action="#" th:action="@{/saveUpdateItem}" th:object="${item}"
+			method="POST">
+			
+			<!-- Add hidden form field to handle update -->
+			<input th:type="hidden" th:field="*{ItemId}" />
+			
+			<input type="text" th:field="*{foodItemName}" class="form-control mb-4 col-4">
+				<input type="text" th:field="*{url}" class="form-control mb-4 col-4">
+				
+				<input type="text" th:field="*{price}" class="form-control mb-4 col-4">
+				
+
+				
+				<div class="form-check">
+					<input class="form-check-input" type="radio" th:field="*{availablity}" id="flexRadioDefault1"  value="true">
+					<label class="form-check-label" for="flexRadioDefault1" style="color: white; font-size: larger;">
+						Available
+					</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" th:field="*{availablity}" id="flexRadioDefault2" checked  value="false">
+					<label class="form-check-label" for="flexRadioDefault2" style="color: white; font-size: larger;">
+						Not Available
+					</label>
+				</div>
+				
+				<button type="submit" class="btn btn-info col-2" style="background-color: #ff9d1e; color: black; font-size: larger; font-weight: 500;"> Update </button>
+		</form>
+
+	</div>
+</body>
+</html>

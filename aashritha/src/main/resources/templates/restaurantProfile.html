@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+ 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Restaurant Profile</title>
+<script src="https://kit.fontawesome.com/0faddc1af8.js"
+	crossorigin="anonymous"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-image: url('/images/reslog.jpg');
+			background-size: cover;
+			background-position: center;
+			min-height: 100vh;
+			padding-top: 0px;
+			margin-top: 0px;
+			align-items: center;
+			
+		}
+
+		a {
+			text-decoration: none;
+		}
+		
+		#navbarNav{
+			display: flex;
+			justify-content: end;
+		}
+
+	</style>
+</head>
+
+<body>
+ 
+  
+<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px; margin: 0px; border: 0px;">
+			<div class="container">
+				<!-- Company Name to the Left -->
+				<a class="navbar-brand" href="#" th:href="@{/backToRestaurantHome}" style="font-size: xx-large; font-weight: 400; color: black; text-align: center;">Food To
+					Go</a>
+
+				</div>
+			</div>
+		</nav>
+	</header>
+ <section id ="main" style="padding: 0px; margin: 0px; border: 0px;">
+<div class="container my-5 col-md-4">
+		<img th:src="${restaurant.url}" style="width: 400px; height: 250px;">
+		<br><br><br>
+		<table class="table " style="color: white; font-size: larger;">
+			<tr>
+				<th>Name</th>
+				<td th:text="${restaurant.restaurantName}"></td>
+			</tr>
+			<tr>
+				<th>Owner Name</th>
+				<td th:text="${restaurant.restaurantOwnerName}"></td>
+			</tr>
+			<tr>
+				<th>Contact</th>
+				<td th:text="${restaurant.restaurantPhoneNumber}"></td>
+			</tr>
+			<tr>
+				<th>EmailID</th>
+				<td th:text="${restaurant.restaurantEmail}"></td>
+			</tr>
+			<tr>
+				<th>Area</th>
+				<td th:text="${restaurant.address}"></td>
+			</tr>
+
+		</table>
+		<br><br>
+		<a th:href="@{/updateRestaurantForm}"><button type="button" class="btn btn-primary btn-lg" style="background-color: #ff9d1e; color: black; font-size: larger; font-weight: 500;">Update Restaurant</button></a>
+ <a th:href="@{/backToRestaurantHome}" style="padding-left: 20%;"><button type="button" class="btn btn-primary btn-lg" style="background-color: #ff9d1e; color: black; font-size: larger; font-weight: 500;">Back</button></a>
+	
+	</div>
+
+	
+ </section>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+ 
+</body>
+</html>

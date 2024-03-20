@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> 
+    </script> 
+    <script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"> 
+    </script> 
+    
+    <title>Restaurant Login Page</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('/images/reslog.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        .wrapper{
+            width: 420px;
+            color: white;
+        }
+
+        .wrapper h1{
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .wrapper .input-box{
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+        }
+
+        .input-box input{
+            width: 100%;
+            height: 100%;
+            background:transparent;
+            border: none;
+            outline: none;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 40px;
+            font-size: 16px;
+            color: white;
+            padding: 20px 45px 20px 20px;
+        }
+
+        .input-box input::placeholder{
+            color: white;
+        }
+
+        .wrapper .btn{
+            width: 100%;
+            height: 45px;
+            background-color: white;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            color: black;
+            font-size: large;
+            
+        }
+
+        .wrapper .registration-link{
+            font-size: 14.5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .registration-link p a{
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+       
+        
+    </style>
+</head>
+<body>
+     <div class="wrapper">
+        <form action="#" th:action="@{/restaurantCheck}" method="post">
+            <h1><b>Restaurant Login</b></h1>
+            <div class="input-box">
+                <input type="text" placeholder="Useraname/Email" required name="restaurantEmail">
+                
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Password" required name="restaurantPassword">
+                
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="registration-link">
+                <p>Don't have an account? <a  th:href="@{/restaurantRegistrationform}">Register/Sign Up</a></p>
+            </div>
+        </form>
+     </div>
+</body>
+</html>
